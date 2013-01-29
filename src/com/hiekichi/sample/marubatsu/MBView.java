@@ -11,7 +11,7 @@ import android.view.SurfaceView;
 
 public class MBView extends SurfaceView implements SurfaceHolder.Callback {
 
-	Masu[][] masu; // 升目を表現したクラスを2次元配列で用意
+	Masu[][] masu; // 升目を表現したクラスを2次元配列で用意❤
 	final int masuSizeX = 3;  // 升目を横に何個配置するか
 	final int masuSizeY = 3;  // 升目を縦に何個配置するか
 
