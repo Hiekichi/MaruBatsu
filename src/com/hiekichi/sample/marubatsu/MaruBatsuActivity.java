@@ -1,4 +1,4 @@
-package com.hiekichi.sample.marubatsu;
+﻿package com.hiekichi.sample.marubatsu;
 
 import android.app.Activity;
 import android.content.res.Configuration;

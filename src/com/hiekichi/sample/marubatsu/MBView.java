@@ -1,4 +1,4 @@
-package com.hiekichi.sample.marubatsu;
+ï»¿package com.hiekichi.sample.marubatsu;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,28 +11,28 @@ import android.view.SurfaceView;
 
 public class MBView extends SurfaceView implements SurfaceHolder.Callback {
 
-	Masu[][] masu; // ¡–Ú‚ğ•\Œ»‚µ‚½ƒNƒ‰ƒX‚ğ2ŸŒ³”z—ñ‚Å—pˆÓ
-	final int masuSizeX = 3;  // ¡–Ú‚ğ‰¡‚É‰½ŒÂ”z’u‚·‚é‚©
-	final int masuSizeY = 3;  // ¡–Ú‚ğc‚É‰½ŒÂ”z’u‚·‚é‚©
+	Masu[][] masu; // å‡ç›®ã‚’è¡¨ç¾ã—ãŸã‚¯ãƒ©ã‚¹ã‚’2æ¬¡å…ƒé…åˆ—ã§ç”¨æ„
+	final int masuSizeX = 3;  // å‡ç›®ã‚’æ¨ªã«ä½•å€‹é…ç½®ã™ã‚‹ã‹
+	final int masuSizeY = 3;  // å‡ç›®ã‚’ç¸¦ã«ä½•å€‹é…ç½®ã™ã‚‹ã‹
 
-	int value = 1; // Ÿ‚É•\¦‚³‚¹‚é›~‚Ì’lA1:›  2:~
+	int value = 1; // æ¬¡ã«è¡¨ç¤ºã•ã›ã‚‹â—‹Ã—ã®å€¤ã€1:â—‹  2:Ã—
 	
-	private SurfaceHolder	holder;  // ƒT[ƒtƒFƒCƒXƒzƒ‹ƒ_[
-	Paint paint = new Paint();  // ƒyƒCƒ“ƒgƒCƒ“ƒXƒ^ƒ“ƒX
+	private SurfaceHolder	holder;  // ã‚µãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ãƒ›ãƒ«ãƒ€ãƒ¼
+	Paint paint = new Paint();  // ãƒšã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	
 	public MBView(Context context) {
 		super(context);
 
-		// ¡–Úˆê‚Â•ª‚ÌƒTƒCƒY‚ğMasuƒNƒ‰ƒX‚ÌƒXƒ^ƒeƒBƒbƒNƒtƒB[ƒ‹ƒh‚Éİ’è‚·‚é
+		// å‡ç›®ä¸€ã¤åˆ†ã®ã‚µã‚¤ã‚ºã‚’Masuã‚¯ãƒ©ã‚¹ã®ã‚¹ã‚¿ãƒ†ã‚£ãƒƒã‚¯ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«è¨­å®šã™ã‚‹
 		Masu.width  = this.getWidth()  / masuSizeX;
 		Masu.height = this.getHeight() / masuSizeY;
 
-		// ƒT[ƒtƒFƒCƒXƒzƒ‹ƒ_[‚Ì€”õ
+		// ã‚µãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ãƒ›ãƒ«ãƒ€ãƒ¼ã®æº–å‚™
 		holder = this.getHolder();
 		holder.addCallback(this);
 		holder.setFixedSize(this.getWidth(), this.getHeight());
 
-		// ƒ}ƒX‚Ì€”õ
+		// ãƒã‚¹ã®æº–å‚™
 		masu = new Masu[masuSizeX][masuSizeY];
 		for (int x = 0; x < masuSizeX; ++x) {
 			for(int y = 0; y < masuSizeY; ++y) {
@@ -45,32 +45,32 @@ public class MBView extends SurfaceView implements SurfaceHolder.Callback {
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		// ƒrƒ…[ì¬‚És‚í‚¹‚éˆ—
+		// ãƒ“ãƒ¥ãƒ¼ä½œæˆæ™‚ã«è¡Œã‚ã›ã‚‹å‡¦ç†
 	}
 	
 	@Override
 	public void surfaceChanged(SurfaceHolder holder,
 			                    int format, int w, int h) {
-		// ‰æ–ÊƒTƒCƒY•Ï‰»‚És‚í‚¹‚éˆ—
-		// ¡–Úˆê‚Â•ª‚ÌƒTƒCƒY‚ğÄİ’è
+		// ç”»é¢ã‚µã‚¤ã‚ºå¤‰åŒ–æ™‚ã«è¡Œã‚ã›ã‚‹å‡¦ç†
+		// å‡ç›®ä¸€ã¤åˆ†ã®ã‚µã‚¤ã‚ºã‚’å†è¨­å®š
 		Masu.width  = this.getWidth()  / masuSizeX;
 		Masu.height = this.getHeight() / masuSizeY;
 
-		// Ä•`‰æ‚ğw¦
+		// å†æç”»ã‚’æŒ‡ç¤º
 		this.repaint(holder);
 	}
 	
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		// ƒrƒ…[I—¹‚És‚í‚¹‚éˆ—
+		// ãƒ“ãƒ¥ãƒ¼çµ‚äº†æ™‚ã«è¡Œã‚ã›ã‚‹å‡¦ç†
 	}
 
-	// Ä•`‰æ‚ğw¦‚·‚é‚Æ‚«‚É–¾¦“I‚ÉŒÄ‚Ño‚·ƒƒ\ƒbƒh
+	// å†æç”»ã‚’æŒ‡ç¤ºã™ã‚‹ã¨ãã«æ˜ç¤ºçš„ã«å‘¼ã³å‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰
 	protected void repaint(SurfaceHolder holder) {
-		// ƒLƒƒƒ“ƒoƒX‚ğƒƒbƒN
+		// ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’ãƒ­ãƒƒã‚¯
 		Canvas canvas = holder.lockCanvas();
 		
-		// •`‰æ
+		// æç”»
 		paint.setColor(Color.GREEN);
 		canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), paint);
 
@@ -80,19 +80,19 @@ public class MBView extends SurfaceView implements SurfaceHolder.Callback {
 			}
 		}
 		
-		// ƒLƒƒƒ“ƒoƒX‚ğƒAƒ“ƒƒbƒN
+		// ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’ã‚¢ãƒ³ãƒ­ãƒƒã‚¯
 		holder.unlockCanvasAndPost(canvas);
 	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		// ƒ^ƒbƒ`‚³‚ê‚½‚És‚í‚¹‚éˆ—
+		// ã‚¿ãƒƒãƒã•ã‚ŒãŸæ™‚ã«è¡Œã‚ã›ã‚‹å‡¦ç†
 
-		// ƒ^ƒbƒ`‚³‚ê‚½¡–Ú‚ª‚Ç‚ê‚©‚ğŒvZ‚Å‹‚ß‚é
+		// ã‚¿ãƒƒãƒã•ã‚ŒãŸå‡ç›®ãŒã©ã‚Œã‹ã‚’è¨ˆç®—ã§æ±‚ã‚ã‚‹
 		int x = (int)event.getX() / (getWidth()  / masuSizeX);
 		int y = (int)event.getY() / (getHeight() / masuSizeY);
 
-		// Ÿ‚É•`‰æ‚³‚¹‚é‚Ì‚ª›‚©~‚©‚ğİ’è‚·‚é
+		// æ¬¡ã«æç”»ã•ã›ã‚‹ã®ãŒâ—‹ã‹Ã—ã‹ã‚’è¨­å®šã™ã‚‹
 		if (masu[x][y].getValue() == 0) {
 			masu[x][y].setValue(value);
 			if (value == 1) {
@@ -103,20 +103,20 @@ public class MBView extends SurfaceView implements SurfaceHolder.Callback {
 			}
 		}
 
-		// Ä•`‰æ‚ğw¦
+		// å†æç”»ã‚’æŒ‡ç¤º
 		repaint(getHolder());
 		return true;
 	}
 }
 
 class Masu {
-	public static int width, height; // ¡–Úˆê‚Â•ª‚Ì‘å‚«‚³
-	int x, y; // 2ŸŒ³”z—ñ‚Ì“Yš‚É‘Š“–
-	int value = 0; // 0:‹ó”’  1:›  2:~
+	public static int width, height; // å‡ç›®ä¸€ã¤åˆ†ã®å¤§ãã•
+	int x, y; // 2æ¬¡å…ƒé…åˆ—ã®æ·»å­—ã«ç›¸å½“
+	int value = 0; // 0:ç©ºç™½  1:â—‹  2:Ã—
 	private Paint paint;
 
 	private Masu() {
-		// ƒyƒCƒ“ƒgƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬‚Æİ’è
+		// ãƒšã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”Ÿæˆã¨è¨­å®š
 		paint = new Paint();
 		paint.setStrokeWidth(5.0F);
 		paint.setStyle(Style.STROKE);
@@ -129,21 +129,21 @@ class Masu {
 	}
 	
 	public void draw(Canvas canvas) {
-		// •`‰æ‚Åg—p‚·‚éŠeí’l‚ÌŒvZ
+		// æç”»ã§ä½¿ç”¨ã™ã‚‹å„ç¨®å€¤ã®è¨ˆç®—
 		int x1 = width * x;    			int y1 = height * y;
 		int x2 = width * x + width;    	int y2 = height * y + height;
 		int xMargin = width / 10;		int yMargin = height / 10;
 		int hankei = Math.min( width / 2 - xMargin, height / 2 - yMargin);
 
-		// ŠO˜g‚Ì•`‰æ
+		// å¤–æ ã®æç”»
 		paint.setColor(Color.BLACK);
 		canvas.drawRect(x1, y1, x2, y2, paint);
 
-		if (value == 1) { // ›‚Ì•`‰æ
+		if (value == 1) { // â—‹ã®æç”»
 			paint.setColor(Color.BLUE);
 			canvas.drawCircle((x1 + x2) / 2, (y1 + y2) / 2, hankei, paint);
 		}
-		else if (value == 2) { // ~‚Ì•`‰æ
+		else if (value == 2) { // Ã—ã®æç”»
 			paint.setColor(Color.RED);
 			canvas.drawLine(x1 + xMargin, y1 + yMargin, x2 - xMargin, y2 - yMargin, paint);
 			canvas.drawLine(x1 + xMargin, y2 - yMargin, x2 - xMargin, y1 + yMargin, paint);
